@@ -1,4 +1,4 @@
-lass PostsController < Sinatra::Base
+class PostsController < Sinatra::Base
   # sets root as the parent-directory of the current file
   set :root, File.join(File.dirname(__FILE__), '..')
  
@@ -12,4 +12,17 @@ lass PostsController < Sinatra::Base
         id: 0,
         title: "Post 1",
         body: "This is the first post"
-    }
+    }];
+
+    get '/' do
+
+      @title = 'Testing'
+
+      @posts = posts
+
+      erb :'index'
+    end
+
+  end
+
+end
