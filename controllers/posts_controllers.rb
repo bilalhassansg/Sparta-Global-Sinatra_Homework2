@@ -10,18 +10,31 @@ class PostsController < Sinatra::Base
 
     posts = [{
         id: 0,
-        title: "Post 1",
-        body: "This is the first post"
+        title: "Iron Man",
+        body: "This is the first Marvel Movie to watch"
     }];
 
     get '/' do
 
-      @title = 'Testing'
+      @title = 'Marvel Movies'
 
       @posts = posts
 
       erb :'index'
     end
+
+     get '/' do
+
+    post = Post.new
+    post.title = params[:title]
+    post.body = params[:body]
+
+    post.save
+
+    redirect "/"
+ 
+  
+  end
 
   end
 
